@@ -6,81 +6,64 @@
   <title>AGUF — des lieux pour s'évader de Paris</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f8f3eb;
-      --bg-2: #f1e8db;
-      --ink: #201b17;
-      --muted: #6e655d;
-      --line: rgba(32,27,23,0.08);
-      --white: rgba(255,255,255,0.75);
-      --olive: #58664d;
-      --olive-soft: #7b8a70;
-      --shadow: 0 24px 60px rgba(32,27,23,0.08);
+      --bg: #f6f0e7;
+      --bg-2: #efe5d7;
+      --ink: #1f1a17;
+      --muted: #6a625a;
+      --line: rgba(31,26,23,0.08);
+      --card: rgba(255,255,255,0.62);
+      --olive: #5f6e53;
+      --olive-2: #86957b;
+      --shadow: 0 22px 60px rgba(31,26,23,0.08);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      color: var(--ink);
       font-family: 'Manrope', sans-serif;
+      color: var(--ink);
       background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
     }
 
     a { color: inherit; text-decoration: none; }
-    img { display: block; width: 100%; }
     .container { width: min(1280px, calc(100% - 40px)); margin: 0 auto; }
 
     header {
       position: sticky;
       top: 0;
-      z-index: 30;
-      backdrop-filter: blur(14px);
-      background: rgba(248,243,235,0.8);
+      z-index: 40;
+      backdrop-filter: blur(12px);
+      background: rgba(246,240,231,0.82);
       border-bottom: 1px solid var(--line);
     }
 
     .nav {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 18px 0;
-    }
-
-    .brand {
-      font-family: 'EB Garamond', serif;
-      font-size: 34px;
-      letter-spacing: .12em;
-      font-weight: 700;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .btn {
-      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 999px;
-      background: var(--olive);
-      color: #f6f0e7;
-      font-weight: 700;
-      box-shadow: 0 12px 26px rgba(88,102,77,0.16);
+      padding: 16px 0;
+    }
+
+    .nav a,
+    .nav button {
+      font-size: 14px;
+      color: var(--muted);
+      background: none;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      font-family: inherit;
     }
 
     .hero {
-      padding: 56px 0 38px;
+      padding: 42px 0 28px;
       display: grid;
-      grid-template-columns: .95fr 1.05fr;
-      gap: 28px;
+      grid-template-columns: .92fr 1.08fr;
+      gap: 26px;
       align-items: stretch;
     }
 
@@ -88,278 +71,438 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 16px 0;
+      padding: 18px 0;
     }
 
-    .eyebrow {
-      text-transform: uppercase;
-      letter-spacing: .22em;
-      font-size: 12px;
-      color: var(--olive-soft);
-      margin-bottom: 18px;
+    .prelabel {
+      color: var(--muted);
+      margin-bottom: 12px;
+      font-size: 14px;
     }
 
     h1, h2, h3 {
       margin: 0;
-      font-family: 'EB Garamond', serif;
+      font-family: 'Cormorant Garamond', serif;
       font-weight: 600;
-      line-height: .95;
+      line-height: .9;
     }
 
     h1 {
-      font-size: clamp(62px, 8vw, 118px);
-      max-width: 620px;
+      font-size: clamp(68px, 10vw, 136px);
+      letter-spacing: -0.03em;
+      max-width: 480px;
     }
 
-    .lead {
-      margin: 22px 0 28px;
+    .hero-copy p {
+      max-width: 520px;
       color: var(--muted);
       line-height: 1.85;
-      max-width: 540px;
-      font-size: 17px;
+      margin: 24px 0;
+      font-size: 16px;
+    }
+
+    .about-link {
+      width: max-content;
+      padding-bottom: 2px;
+      border-bottom: 1px solid rgba(31,26,23,0.24);
     }
 
     .hero-visual {
-      min-height: 720px;
-      border-radius: 36px;
+      min-height: 760px;
+      border-radius: 34px;
       overflow: hidden;
-      position: relative;
-      box-shadow: var(--shadow);
       background:
-        linear-gradient(to top, rgba(25,22,18,0.26), rgba(25,22,18,0.06)),
-        url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=80') center/cover;
+        linear-gradient(to top, rgba(24,20,17,0.28), rgba(24,20,17,0.04)),
+        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') center/cover;
+      box-shadow: var(--shadow);
+      position: relative;
     }
 
-    .hero-badge {
-      position: absolute;
-      left: 22px;
-      bottom: 22px;
-      right: 22px;
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(255,255,255,0.62);
-      border-radius: 22px;
-      padding: 20px 22px;
-      backdrop-filter: blur(14px);
+    .section {
+      padding: 26px 0 72px;
     }
 
-    .hero-badge strong {
-      display: block;
-      font-size: 22px;
+    .split-head {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 22px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+
+    .split-head .label {
+      color: var(--muted);
+      font-size: 14px;
       margin-bottom: 8px;
     }
 
-    .hero-badge span {
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 14px;
+    .split-head h2 {
+      font-size: clamp(38px, 5vw, 72px);
     }
 
-    section { padding: 34px 0 72px; }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 24px;
-      align-items: end;
-      margin-bottom: 24px;
-    }
-
-    .section-head p {
+    .split-head p {
       margin: 0;
-      max-width: 580px;
+      color: var(--muted);
+      line-height: 1.85;
+      max-width: 620px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .feature-card {
+      min-height: 220px;
+      border-radius: 26px;
+      padding: 24px;
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(255,255,255,0.64);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-card h3 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      margin: 0;
       color: var(--muted);
       line-height: 1.8;
     }
 
-    h2 {
-      font-size: clamp(42px, 4vw, 66px);
-      max-width: 760px;
+    .addresses-head {
+      margin-bottom: 18px;
     }
 
-    .places-grid {
+    .addresses-head h2 {
+      font-size: clamp(44px, 5vw, 82px);
+      line-height: .92;
+      max-width: 620px;
+    }
+
+    .carousel {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+      gap: 16px;
     }
 
-    .place-card {
-      min-height: 360px;
-      border-radius: 32px;
+    .address-card {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 0;
+      min-height: 460px;
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(255,255,255,0.64);
+      border-radius: 34px;
       overflow: hidden;
-      position: relative;
       box-shadow: var(--shadow);
+    }
+
+    .address-image {
+      min-height: 460px;
       background-size: cover;
       background-position: center;
     }
 
-    .place-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(24,20,17,0.74), rgba(24,20,17,0.12));
+    .address-copy {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .place-copy {
-      position: absolute;
-      left: 24px;
-      right: 24px;
-      bottom: 22px;
-      z-index: 1;
-      color: #f8f2ea;
+    .address-meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 16px;
     }
 
-    .place-copy small {
-      display: inline-block;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      margin-bottom: 8px;
-      opacity: .88;
+    .address-copy h3 {
+      font-size: 54px;
+      margin-bottom: 14px;
     }
 
-    .place-copy h3 {
-      font-size: 38px;
-      margin-bottom: 10px;
+    .address-copy p {
+      color: var(--muted);
+      line-height: 1.85;
+      margin: 0 0 22px;
     }
 
-    .place-copy p {
-      margin: 0;
-      color: rgba(248,242,234,0.9);
-      line-height: 1.8;
-      max-width: 92%;
+    .reserve-link {
+      width: max-content;
+      padding: 12px 18px;
+      border-radius: 999px;
+      background: var(--olive);
+      color: #f6f0e7;
+      font-weight: 700;
+    }
+
+    .mosaic-head h2,
+    .agency-head h2,
+    .news-head h2,
+    .newsletter-head h2 {
+      font-size: clamp(42px, 5vw, 76px);
+      line-height: .92;
+      max-width: 720px;
     }
 
     .mosaic {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      gap: 14px;
     }
 
-    .mosaic-card {
-      min-height: 220px;
-      border-radius: 26px;
+    .mosaic-col {
+      display: grid;
+      gap: 14px;
+    }
+
+    .mosaic-item {
+      min-height: 230px;
+      border-radius: 28px;
       overflow: hidden;
       position: relative;
-      box-shadow: var(--shadow);
       background-size: cover;
       background-position: center;
+      box-shadow: var(--shadow);
     }
 
-    .mosaic-card::after {
+    .mosaic-item::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(24,20,17,0.68), rgba(24,20,17,0.10));
+      background: linear-gradient(to top, rgba(23,18,15,0.62), rgba(23,18,15,0.08));
     }
 
-    .mosaic-card span {
+    .mosaic-item span {
       position: absolute;
       left: 18px;
-      bottom: 18px;
+      bottom: 16px;
       z-index: 1;
       color: #fff7ef;
       font-weight: 600;
     }
 
-    .agency {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-      align-items: stretch;
+    .agency-box {
+      max-width: 760px;
     }
 
-    .agency-box,
-    .chef-card,
-    .newsletter,
-    .footer-box {
+    .agency-box p {
+      color: var(--muted);
+      line-height: 1.85;
+      margin: 0 0 12px;
+    }
+
+    .agency-link,
+    .news-link {
+      display: inline-block;
+      margin-top: 8px;
+      padding-bottom: 2px;
+      border-bottom: 1px solid rgba(31,26,23,0.24);
+    }
+
+    .chefs-band {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-bottom: 20px;
+      color: var(--muted);
+    }
+
+    .chef-carousel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .chef-card {
       background: rgba(255,255,255,0.58);
       border: 1px solid rgba(255,255,255,0.64);
-      backdrop-filter: blur(14px);
       border-radius: 30px;
-      padding: 28px;
+      overflow: hidden;
       box-shadow: var(--shadow);
     }
 
-    .agency-box p,
-    .agency-box li,
-    .chef-card p,
-    .newsletter p,
+    .chef-photo {
+      height: 280px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .chef-copy {
+      padding: 24px;
+    }
+
+    .chef-copy h3 {
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .chef-copy p {
+      color: var(--muted);
+      line-height: 1.85;
+      margin: 0 0 12px;
+    }
+
+    .news-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 22px;
+      margin-bottom: 18px;
+    }
+
+    .news-head p {
+      color: var(--muted);
+      line-height: 1.85;
+      max-width: 540px;
+    }
+
+    .news-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .news-card,
+    .content-card,
+    .newsletter-box,
+    .footer-box {
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(255,255,255,0.64);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .news-card h3,
+    .content-card h3 {
+      font-size: 30px;
+      margin: 8px 0 10px;
+    }
+
+    .news-card p,
+    .content-card p,
+    .newsletter-box p,
     footer p,
     footer a,
     footer span {
       color: var(--muted);
       line-height: 1.85;
+      margin: 0;
     }
 
-    .agency-box ul { margin: 18px 0 0; padding-left: 18px; }
-
-    .chefs {
+    .content-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .newsletter-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
       gap: 18px;
-    }
-
-    .chef-card h3 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    .newsletter {
-      display: flex;
-      justify-content: space-between;
-      gap: 22px;
       align-items: center;
     }
 
-    .newsletter p { max-width: 700px; margin: 12px 0 0; }
+    .newsletter-form {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .newsletter-form input {
+      min-width: 220px;
+      padding: 14px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(31,26,23,0.12);
+      background: rgba(255,255,255,0.82);
+      font: inherit;
+    }
+
+    .newsletter-form button {
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 18px;
+      background: var(--olive);
+      color: #f6f0e7;
+      font-weight: 700;
+      cursor: pointer;
+    }
 
     footer {
-      padding: 26px 0 44px;
+      padding: 26px 0 42px;
       border-top: 1px solid var(--line);
-      margin-top: 34px;
+      margin-top: 28px;
     }
 
-    .footer-grid {
+    .footer-top {
       display: grid;
-      grid-template-columns: 1.2fr .8fr .8fr .8fr;
+      grid-template-columns: .8fr .8fr 1.4fr;
       gap: 18px;
+      margin-bottom: 18px;
     }
 
-    .footer-box strong {
+    .footer-links a { display: block; margin-bottom: 6px; }
+
+    .addresses-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .address-foot strong {
       display: block;
-      font-family: 'EB Garamond', serif;
-      font-size: 26px;
-      margin-bottom: 12px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      margin-bottom: 8px;
     }
 
     .footer-bottom {
       display: flex;
       justify-content: space-between;
       gap: 16px;
-      margin-top: 22px;
       font-size: 13px;
       color: var(--muted);
+      margin-top: 18px;
     }
 
     @media (max-width: 980px) {
       .hero,
-      .places-grid,
+      .split-head,
+      .feature-grid,
+      .address-card,
       .mosaic,
-      .agency,
-      .chefs,
-      .footer-grid,
-      .newsletter {
+      .chefs-band,
+      .chef-carousel,
+      .news-layout,
+      .news-cards,
+      .content-grid,
+      .newsletter-box,
+      .footer-top,
+      .addresses-list {
         grid-template-columns: 1fr;
       }
 
       .hero,
-      .places-grid,
+      .feature-grid,
       .mosaic,
-      .agency,
-      .chefs,
-      .footer-grid { display: grid; }
+      .chefs-band,
+      .chef-carousel,
+      .news-cards,
+      .content-grid,
+      .footer-top,
+      .addresses-list { display: grid; }
+
       .nav-links { display: none; }
       .hero-visual { min-height: 420px; }
-      .section-head { display: block; }
+      .address-image { min-height: 300px; }
+      .section-head, .split-head { display: block; }
+      .newsletter-box { display: block; }
       .footer-bottom { flex-direction: column; }
     }
   </style>
@@ -367,195 +510,252 @@
 <body>
   <header>
     <div class="container nav">
-      <div class="brand">AGUF</div>
-      <nav class="nav-links">
-        <a href="#addresses">Nos adresses</a>
-        <a href="#agency">Agency</a>
-        <a href="#chefs">Nos chefs</a>
-        <a href="#newsletter">Newsletter</a>
-      </nav>
-      <a class="btn" href="#addresses">Explorer</a>
+      <a href="#top">home</a>
+      <button>menu</button>
     </div>
   </header>
 
-  <main class="container">
+  <main class="container" id="top">
     <section class="hero">
       <div class="hero-copy">
-        <span class="eyebrow">Préambule</span>
-        <h1>des lieux pour s'évader de Paris</h1>
-        <p class="lead">Sortir de Paris à Paris, tel est le slogan d'AGUF depuis son lancement. AGUF a une mission : offrir aux citadins des moments d’évasion à côté de chez eux. Pour AGUF, l'évasion est le premier des luxes.</p>
-        <a class="btn" href="#addresses" style="width:max-content;">À propos</a>
+        <div class="prelabel">Préambule</div>
+        <h1>Vous n'avez pas fini de vous évader</h1>
       </div>
+      <div class="hero-visual"></div>
+    </section>
 
-      <div class="hero-visual">
-        <div class="hero-badge">
-          <strong>Un univers de lieux singuliers</strong>
-          <span>Restaurants, rooftops, espaces événementiels et expériences pensées comme autant de parenthèses dans la ville.</span>
+    <section class="section">
+      <div class="split-head">
+        <div>
+          <h2>AGUF = Evasion en latin</h2>
+          <div class="label">Préambule</div>
+        </div>
+        <div>
+          <p>Sortir de Paris à Paris, tel est le slogan d'AGUF depuis son lancement. AGUF a une mission : offrir aux citadins des moments d’évasion à côté de chez eux. Pour AGUF, l'évasion est le premier des luxes.</p>
+          <a class="about-link" href="#">À propos</a>
         </div>
       </div>
     </section>
 
-    <section id="addresses">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Nos adresses</span>
-          <h2>pour s’évader</h2>
-        </div>
-        <p>Une homepage pensée comme une succession d’escales : chaque lieu a sa propre personnalité, mais l’ensemble garde la même idée centrale d’évasion urbaine.</p>
+    <section class="section">
+      <div class="feature-grid">
+        <article class="feature-card">
+          <h3>Restaurants</h3>
+          <p>Nos adresses vous offrent une cuisine savoureuse et raffinée dans des décors uniques. On vous invite au cœur d'un voyage culinaire sans quitter Paris.</p>
+        </article>
+        <article class="feature-card">
+          <h3>AGUF SPACE</h3>
+          <p>Une nouvelle adresse rétro-futuriste dédiée à l'évènementiel au cœur du 8ème arrondissement, avec auditorium et espace de réception.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Programmation</h3>
+          <p>Bien plus que des restaurants, nos adresses sont de véritables lieux de vie dans lesquels il se passe toujours quelque chose.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Évènementiel</h3>
+          <p>Des lieux uniques à Paris pour lancer, recevoir, célébrer et organiser des événements de 15 à 250 personnes.</p>
+        </article>
       </div>
+    </section>
 
-      <div class="places-grid">
-        <article class="place-card" style="background-image:url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1400&q=80')">
-          <div class="place-copy">
-            <small>Péniche │ Paris 7</small>
-            <h3>Riviera AGUF</h3>
-            <p>Riviera AGUF est un lieu unique sur la Seine offrant une vue imprenable et une ambiance inspirée de la French Riviera. Une évasion garantie au cœur de Paris.</p>
+    <section class="section">
+      <div class="addresses-head">
+        <h2>Nos adresses pour s’évader</h2>
+      </div>
+      <div class="carousel">
+        <article class="address-card">
+          <div class="address-image" style="background-image:url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="address-copy">
+            <div>
+              <div class="address-meta">Péniche │ Paris 7</div>
+              <h3>Riviera AGUF</h3>
+              <p>Riviera AGUF est un lieu unique sur la Seine offrant une vue imprenable et une expérience immersive inspirée de l’élégance parisienne et des allures de Riviera.</p>
+            </div>
+            <a class="reserve-link" href="#">Réserver</a>
           </div>
         </article>
-        <article class="place-card" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=80')">
-          <div class="place-copy">
-            <small>Péniche │ Paris 7</small>
-            <h3>Francette AGUF</h3>
-            <p>Restaurant flottant sur plusieurs niveaux, amarré sous la Tour Eiffel, avec une cuisine française pensée comme une vraie immersion.</p>
-          </div>
-        </article>
-        <article class="place-card" style="background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80')">
-          <div class="place-copy">
-            <small>Restaurant │ Paris 8</small>
-            <h3>Laïa Monceau</h3>
-            <p>Une adresse méditerranéenne aux accents italiens, entre confort, élégance et terrasse arborée au cœur de Paris.</p>
-          </div>
-        </article>
-        <article class="place-card" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80')">
-          <div class="place-copy">
-            <small>Restaurant │ Paris 11</small>
-            <h3>Laïa Voltaire</h3>
-            <p>Une ancienne distillerie transformée en oasis lumineuse, portée par une cuisine solaire et une vraie sensation de voyage.</p>
-          </div>
-        </article>
-        <article class="place-card" style="background-image:url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1400&q=80')">
-          <div class="place-copy">
-            <small>Rooftop │ Paris 8</small>
-            <h3>AGUF R.</h3>
-            <p>Au-dessus des toits, un rooftop pensé comme un havre de détente avec cuisine extérieure, musique live et panoramas parisiens.</p>
-          </div>
-        </article>
-        <article class="place-card" style="background-image:url('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1400&q=80')">
-          <div class="place-copy">
-            <small>Event & Wine │ Paris 8</small>
-            <h3>AGUF W.</h3>
-            <p>Un espace lounge et raffiné, conçu pour des événements sur mesure, dans un univers lié à l’hospitalité et au vin.</p>
+        <article class="address-card">
+          <div class="address-image" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=80')"></div>
+          <div class="address-copy">
+            <div>
+              <div class="address-meta">Péniche │ Paris 7</div>
+              <h3>Francette</h3>
+              <p>Restaurant flottant sur 3 étages situé sous l'emblème national. Une immersion parisienne au plus près de la gastronomie française revisitée.</p>
+            </div>
+            <a class="reserve-link" href="#">Réserver</a>
           </div>
         </article>
       </div>
     </section>
 
-    <section>
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Pour tous ceux</span>
-          <h2>qui ont faim d’expériences uniques</h2>
-        </div>
-        <p>Le rythme visuel reprend celui du site source : une grande séquence d’images et de noms de lieux, pensée comme une galerie vivante plus que comme un catalogue figé.</p>
+    <section class="section">
+      <div class="mosaic-head">
+        <h2>Pour tous ceux qui ont faim d’expériences uniques</h2>
       </div>
-
       <div class="mosaic">
-        <div class="mosaic-card" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80')"><span>Laïa Voltaire</span></div>
-        <div class="mosaic-card" style="background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80')"><span>Laïa Monceau</span></div>
-        <div class="mosaic-card" style="background-image:url('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80')"><span>AGUF SPACE</span></div>
-        <div class="mosaic-card" style="background-image:url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1200&q=80')"><span>AGUF R.</span></div>
-        <div class="mosaic-card" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80')"><span>Francette AGUF</span></div>
-        <div class="mosaic-card" style="background-image:url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80')"><span>Riviera AGUF</span></div>
-      </div>
-    </section>
-
-    <section id="agency">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">AGUF Agency</span>
-          <h2>Développez vos projets food et lifestyle grâce aux savoir-faire de nos talents.</h2>
+        <div class="mosaic-col">
+          <div class="mosaic-item" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80')"><span>Laïa Voltaire</span></div>
+          <div class="mosaic-item" style="background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80')"><span>Laïa Monceau</span></div>
+          <div class="mosaic-item" style="background-image:url('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80')"><span>AGUF SPACE</span></div>
         </div>
-        <p>Le bloc agency reste un pivot important : il transforme AGUF en marque capable d’opérer des lieux, mais aussi d’activer un univers complet pour d’autres projets.</p>
-      </div>
-
-      <div class="agency">
-        <div class="agency-box">
-          <p>Nous imaginons des dispositifs uniques et déployons des activations en accord avec l’univers de votre marque. Faites appel à nos chef.fe.s, pâtissier.ère.s, sommelier.ère.s et talents pour donner une vraie matière à vos opérations.</p>
+        <div class="mosaic-col">
+          <div class="mosaic-item" style="background-image:url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1200&q=80')"><span>AGUF R.</span></div>
+          <div class="mosaic-item" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80')"><span>Francette</span></div>
+          <div class="mosaic-item" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1200&q=80')"><span>Francette</span></div>
         </div>
-        <div class="agency-box">
-          <ul>
-            <li>activations food & lifestyle</li>
-            <li>événementiel immersif</li>
-            <li>collaborations avec talents culinaires</li>
-            <li>expériences cohérentes avec l’univers de marque</li>
-          </ul>
+        <div class="mosaic-col">
+          <div class="mosaic-item" style="background-image:url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80')"><span>Riviera AGUF</span></div>
+          <div class="mosaic-item" style="background-image:url('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80')"><span>AGUF W.</span></div>
+          <div class="mosaic-item" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80')"><span>Laïa Voltaire</span></div>
         </div>
       </div>
     </section>
 
-    <section id="chefs">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">Nos chefs</span>
-          <h2>Des personnalités qui donnent une vraie profondeur aux lieux.</h2>
-        </div>
-        <p>Comme sur le site original, la section chefs renforce la crédibilité de l’écosystème et donne des visages à l’exigence culinaire du groupe.</p>
+    <section class="section">
+      <div class="agency-head">
+        <h2>AGUF Agency</h2>
       </div>
+      <div class="agency-box">
+        <p>Développez vos projets food et lifestyle grâce aux savoir-faire de nos talents. Nous imaginons des dispositifs uniques et déployons des activations en accord avec l’univers de votre marque.</p>
+        <p>Faites appel à nos chef.f.e, pâtissier.ère, sommelier.ère... Leurs univers et leurs expertises sauront faire de vos opérations de communication des moments uniques.</p>
+        <a class="agency-link" href="#">En savoir plus</a>
+      </div>
+    </section>
 
-      <div class="chefs">
+    <section class="section">
+      <div class="chefs-band">
+        <div>Nos chef.f.es et talents</div>
+        <div>Nos chef.f.es et talents</div>
+        <div>Nos chef.f.es et talents</div>
+      </div>
+      <div class="chef-carousel">
         <article class="chef-card">
-          <h3>Fanny Herpin</h3>
-          <p>Une cuisine guidée par la saisonnalité, la précision et l’attention portée au goût. Une direction culinaire pensée pour l’ensemble des adresses.</p>
+          <div class="chef-photo" style="background-image:url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80')"></div>
+          <div class="chef-copy">
+            <h3>Fanny Herpin</h3>
+            <p>Fanny Herpin prend la direction culinaire chez AGUF pour signer l’ensemble des cartes de nos adresses. Sa cuisine se caractérise par la saisonnalité, la précision des cuissons et une attention constante au goût.</p>
+            <a class="agency-link" href="#">En savoir plus</a>
+          </div>
         </article>
         <article class="chef-card">
-          <h3>Francesco De Stefano</h3>
-          <p>Entre héritage italien, esthétisme de l’assiette et énergie solaire, il porte une vision très vivante de la cuisine.</p>
+          <div class="chef-photo" style="background-image:url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80')"></div>
+          <div class="chef-copy">
+            <h3>Francesco De Stefano</h3>
+            <p>Originaire d’Italie, Francesco a grandi à Naples. Il accorde une importance particulière à l’esthétique de ses assiettes, où se mêlent couleurs vibrantes, générosité et émotions.</p>
+            <a class="agency-link" href="#">En savoir plus</a>
+          </div>
         </article>
         <article class="chef-card">
-          <h3>Alizée Durieux</h3>
-          <p>Une approche du vin et de l’hospitalité qui sublime l’expérience et la rend accessible, généreuse et mémorable.</p>
+          <div class="chef-photo" style="background-image:url('https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=1200&q=80')"></div>
+          <div class="chef-copy">
+            <h3>Alizée Durieux</h3>
+            <p>En tant que Cheffe Sommelière Exécutive, Alizée met à profit ses connaissances pour sublimer l'expérience œnologique et gastronomique de nos clients.</p>
+            <a class="agency-link" href="#">En savoir plus</a>
+          </div>
         </article>
       </div>
     </section>
 
-    <section id="newsletter">
-      <div class="newsletter">
-        <div>
-          <span class="eyebrow">Newsletter</span>
-          <h2>Inscrivez vous à notre newsletter</h2>
-          <p>Merci, nous avons bien reçu votre demande. Ce bloc final reprend la logique du site source : une sortie douce, éditoriale, qui garde l’utilisateur dans l’univers de la marque.</p>
+    <section class="section">
+      <div class="news-layout">
+        <div class="news-head">
+          <h2>Nos actualités pour s’évader</h2>
+          <p>Parce que nos adresses sont avant tout des lieux de vie, nous vous proposons une programmation autour de l'évasion. Concert, cours de cuisine, masterclass vin, soirée comedy club... vivez l’expérience AGUF à 100%.</p>
+          <a class="news-link" href="#">Toute la programmation</a>
         </div>
-        <a class="btn" href="#">S'inscrire</a>
+        <div class="news-cards">
+          <article class="news-card">
+            <div>AGUF W. | Expérience vin</div>
+            <h3>Cella AGUF Club</h3>
+            <p>Un cercle dédié aux amoureux du vin avec dégustations, masterclass et rencontres privilégiées.</p>
+          </article>
+          <article class="news-card">
+            <div>AGUF</div>
+            <h3>Évènement</h3>
+            <p>Vous organisez un évènement ? Contactez notre équipe pour privatiser l'une de nos adresses.</p>
+          </article>
+          <article class="news-card">
+            <div>Laïa | Paris 8</div>
+            <h3>Laïa Monceau</h3>
+            <p>Une adresse méditerranéenne, terrasse arborée, décoration chic et élégante pour vous évader.</p>
+          </article>
+          <article class="news-card">
+            <div>Riviera AGUF | Vendredis</div>
+            <h3>Les soirées Riviera</h3>
+            <p>DJ set sur la Seine tous les vendredis soirs, dans une ambiance unique au cœur de Paris.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <article class="content-card">
+          <div>Food & Drinks</div>
+          <h3>Une nouvelle saison, quatre nouvelles cartes</h3>
+          <p>Découvrez nos nouvelles cartes dans nos restaurants parisiens : des nouvelles façons de s’évader.</p>
+        </article>
+        <article class="content-card">
+          <div>20.06.2025 | Food & Drinks</div>
+          <h3>Les cuvées AGUF</h3>
+          <p>Dans chaque bouteille, du soleil, de la sincérité et l’envie de partager un goût d’évasion.</p>
+        </article>
+        <article class="content-card">
+          <div>Actualités</div>
+          <h3>La nouvelle adresse méditerranéenne du 8ème</h3>
+          <p>Terrasse ombragée, cuisine ensoleillée, accueil chaleureux : un moment suspendu à savourer.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="newsletter-head">
+        <h2>Les contenus aguf</h2>
+      </div>
+      <div class="newsletter-box">
+        <div>
+          <h2 style="font-size:clamp(40px,5vw,70px);">Inscrivez vous à notre newsletter</h2>
+          <p>Merci, nous avons bien reçu votre demande.</p>
+          <form class="newsletter-form">
+            <input type="text" placeholder="Prénom" />
+            <input type="email" placeholder="Mail" />
+            <button type="button">S'inscrire</button>
+          </form>
+        </div>
+        <div style="color:var(--muted);">reCAPTCHA</div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container footer-grid">
-      <div class="footer-box">
-        <strong>AGUF</strong>
-        <p>Un ensemble de lieux et d’expériences pour s’évader de Paris sans quitter Paris.</p>
+    <div class="container footer-top">
+      <div class="footer-box footer-links">
+        <a href="#">Linkedin</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Youtube</a>
+      </div>
+      <div class="footer-box footer-links">
+        <a href="#">À propos</a>
+        <a href="#">Groupe & Privatisation</a>
+        <a href="#">Recrutement</a>
+        <a href="#">FAQ</a>
+        <a href="#">CGV</a>
+        <a href="#">Mentions légales</a>
+        <a href="#">Politique de confidentialité</a>
       </div>
       <div class="footer-box">
-        <strong>Explorer</strong>
-        <p><a href="#addresses">Nos adresses</a></p>
-        <p><a href="#agency">Agency</a></p>
-        <p><a href="#chefs">Nos chefs</a></p>
-      </div>
-      <div class="footer-box">
-        <strong>Univers</strong>
-        <p><a href="#newsletter">Newsletter</a></p>
-        <p><a href="#">Les contenus AGUF</a></p>
-        <p><a href="#">À propos</a></p>
-      </div>
-      <div class="footer-box">
-        <strong>Note</strong>
-        <p>Homepage reconstruite pour coller beaucoup plus fidèlement au rythme, à la structure et au feeling de fugafamily.com, sous le nom AGUF.</p>
+        <div class="addresses-list">
+          <div class="address-foot"><strong>Riviera AGUF</strong><p>10 Port des Invalides<br>Paris 7<br>Lundi - Dimanche | 12h-1h</p></div>
+          <div class="address-foot"><strong>Francette</strong><p>1 Port de Suffren<br>Paris 7<br>Lundi - Dimanche | 12h-01h</p></div>
+          <div class="address-foot"><strong>Laïa Monceau</strong><p>28 Rue de Monceau<br>Paris 8<br>Du lundi au samedi</p></div>
+          <div class="address-foot"><strong>Laïa Voltaire</strong><p>226 Boulevard Voltaire<br>Paris 11<br>Mardi - Samedi</p></div>
+          <div class="address-foot"><strong>AGUF R.</strong><p>28 Rue de Monceau<br>Paris 8<br>Mercredi - Dimanche</p></div>
+          <div class="address-foot"><strong>AGUF W.</strong><p>28 Rue de Monceau<br>Paris 8<br>Ouvert sur privatisation</p></div>
+        </div>
       </div>
     </div>
     <div class="container footer-bottom">
-      <span>AGUF · des lieux pour s'évader de Paris</span>
-      <span>Homepage recreation</span>
+      <span>AGUF © 2024</span>
+      <span>Design inspired by Elias</span>
     </div>
   </footer>
 </body>
