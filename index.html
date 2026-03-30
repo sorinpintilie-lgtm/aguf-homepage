@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AGUF — locuri și experiențe pentru evadare urbană</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4efe8;
+      --sand: #ebe2d5;
+      --ink: #1f1a17;
+      --muted: #665e56;
+      --line: rgba(31,26,23,0.08);
+      --olive: #57624b;
+      --olive-soft: #728067;
+      --card: rgba(255,255,255,0.62);
+      --shadow: 0 24px 60px rgba(31,26,23,0.10);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Manrope', sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(87,98,75,0.10), transparent 24%),
+        linear-gradient(180deg, #f6f1ea 0%, #f2ebdf 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1260px, calc(100% - 40px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(244,239,232,0.78);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      letter-spacing: .12em;
+      font-weight: 700;
+    }
+
+    .links {
+      display: flex;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 999px;
+      transition: .22s ease;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: var(--olive);
+      color: #f7f1e9;
+      box-shadow: 0 12px 30px rgba(87,98,75,0.18);
+    }
+
+    .btn-ghost {
+      border-color: rgba(31,26,23,0.12);
+      background: rgba(255,255,255,0.45);
+    }
+
+    .hero {
+      padding: 56px 0 38px;
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-size: 12px;
+      color: var(--olive-soft);
+      margin-bottom: 18px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      line-height: .98;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: clamp(56px, 7vw, 104px);
+      max-width: 760px;
+    }
+
+    .lead {
+      margin: 24px 0 34px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 620px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .hero-note {
+      max-width: 600px;
+      color: var(--muted);
+      border-left: 2px solid rgba(87,98,75,0.28);
+      padding-left: 18px;
+      line-height: 1.8;
+    }
+
+    .hero-visual {
+      min-height: 640px;
+      border-radius: 34px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(to top, rgba(31,26,23,0.30), rgba(31,26,23,0.08)),
+        url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1400&q=80') center/cover;
+    }
+
+    .floating {
+      position: absolute;
+      left: 22px;
+      bottom: 22px;
+      width: calc(100% - 44px);
+      border-radius: 24px;
+      padding: 22px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.62);
+      backdrop-filter: blur(14px);
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+    }
+
+    .floating strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .floating span {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .intro-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .pill-card {
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.62);
+      backdrop-filter: blur(14px);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .pill-card strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .pill-card span {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 14px;
+    }
+
+    section { padding: 34px 0 72px; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .section-head p {
+      max-width: 620px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: clamp(38px, 4vw, 62px);
+      max-width: 760px;
+    }
+
+    .places {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .place {
+      min-height: 340px;
+      border-radius: 30px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--shadow);
+      background-size: cover;
+      background-position: center;
+    }
+
+    .place::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(28,22,18,0.74), rgba(28,22,18,0.14));
+    }
+
+    .place-copy {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 22px;
+      z-index: 1;
+      color: #f8f2ea;
+    }
+
+    .place-copy small {
+      display: inline-block;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      opacity: .84;
+    }
+
+    .place-copy h3 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .place-copy p {
+      margin: 0;
+      color: rgba(248,242,234,0.88);
+      line-height: 1.75;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: .94fr 1.06fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .experience-visual {
+      min-height: 540px;
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(to top, rgba(24,20,17,0.22), rgba(24,20,17,0.05)),
+        url('https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1400&q=80') center/cover;
+    }
+
+    .experience-copy {
+      padding: 34px;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.62);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .experience-copy p,
+    .experience-copy li,
+    .agency p,
+    .agency li,
+    .chef-card p,
+    .newsletter p,
+    footer p,
+    footer a,
+    footer span {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .experience-copy ul,
+    .agency ul {
+      margin: 18px 0 0;
+      padding-left: 18px;
+    }
+
+    .agency {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .agency-panel,
+    .newsletter,
+    .footer-box {
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.62);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .chefs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .chef-card {
+      padding: 26px;
+      background: rgba(255,255,255,0.52);
+      border: 1px solid rgba(255,255,255,0.62);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .chef-card h3 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .cta {
+      padding: 34px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(87,98,75,0.18), rgba(255,255,255,0.52));
+      border: 1px solid rgba(255,255,255,0.62);
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .cta p {
+      max-width: 680px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 12px 0 0;
+    }
+
+    footer {
+      padding: 26px 0 44px;
+      border-top: 1px solid var(--line);
+      margin-top: 34px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr .8fr .8fr;
+      gap: 18px;
+    }
+
+    .footer-box strong {
+      display: block;
+      margin-bottom: 12px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: var(--ink);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .intro-strip,
+      .places,
+      .experience-grid,
+      .agency,
+      .chefs,
+      .footer-grid,
+      .cta {
+        grid-template-columns: 1fr;
+      }
+
+      .hero,
+      .intro-strip,
+      .places,
+      .experience-grid,
+      .agency,
+      .chefs,
+      .footer-grid { display: grid; }
+
+      .links { display: none; }
+      .hero-visual,
+      .experience-visual { min-height: 400px; }
+      .floating {
+        position: static;
+        width: auto;
+        margin: 18px;
+      }
+      .section-head { display: block; }
+      .footer-bottom { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">AGUF</div>
+      <nav class="links">
+        <a href="#places">Adrese</a>
+        <a href="#experience">Experiențe</a>
+        <a href="#agency">Agency</a>
+        <a href="#chefs">Talente</a>
+      </nav>
+      <a class="btn btn-primary" href="#newsletter">Descoperă AGUF</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Locuri și experiențe pentru evadare urbană</span>
+        <h1>des lieux pour s'évader de Paris</h1>
+        <p class="lead">AGUF reunește locuri create pentru oameni care caută mai mult decât o simplă ieșire în oraș. Restaurant, rooftop, spații pentru evenimente și experiențe construite ca mici evadări în mijlocul ritmului urban.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#places">Vezi adresele</a>
+          <a class="btn btn-ghost" href="#agency">Explorează agency</a>
+        </div>
+        <div class="hero-note">Am recreat homepage-ul plecând de la structura și feeling-ul fugafamily.com, dar l-am trecut sub identitatea AGUF și într-o execuție mai clară, mai curată și mai premium vizual.</div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="floating">
+          <div>
+            <strong>O colecție de adrese care schimbă ritmul orașului</strong>
+            <span>Restaurante, rooftop-uri și spații cu personalitate, gândite să ofere o senzație de evadare chiar în inima Parisului.</span>
+          </div>
+          <a class="btn btn-primary" href="#places">Intră</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="intro-strip">
+      <div class="pill-card">
+        <strong>Locuri cu identitate</strong>
+        <span>Fiecare adresă are un ton propriu, o atmosferă clară și o experiență care nu se confundă cu restul.</span>
+      </div>
+      <div class="pill-card">
+        <strong>Food + lifestyle</strong>
+        <span>AGUF stă la intersecția dintre gastronomie, design de spațiu, storytelling și activări de brand.</span>
+      </div>
+      <div class="pill-card">
+        <strong>Evadare urbană</strong>
+        <span>Ideea centrală rămâne simplă: să oferi oamenilor o ieșire reală, fără să plece din oraș.</span>
+      </div>
+    </div>
+
+    <section id="places">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Adrese</span>
+          <h2>Locuri în care ieșirea în oraș capătă alt ton.</h2>
+        </div>
+        <p>Homepage-ul este construit în jurul adreselor, exact cum e firesc pentru un brand umbrella de hospitality: fiecare loc trebuie să stârnească instant o dorință clară de a fi descoperit.</p>
+      </div>
+
+      <div class="places">
+        <article class="place" style="background-image:url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1400&q=80')">
+          <div class="place-copy">
+            <small>Péniche · Paris 7</small>
+            <h3>Riviera AGUF</h3>
+            <p>Un loc suspendat între eleganță pariziană și spirit de Riviera, cu o experiență culinară construită ca o evadare pe apă.</p>
+          </div>
+        </article>
+        <article class="place" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=80')">
+          <div class="place-copy">
+            <small>Restaurant flottant · Paris 7</small>
+            <h3>Francette AGUF</h3>
+            <p>Restaurant pe apă, cu vedere iconică și o experiență gastronomică ancorată în spiritul francez reinterpretat.</p>
+          </div>
+        </article>
+        <article class="place" style="background-image:url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1400&q=80')">
+          <div class="place-copy">
+            <small>Restaurant · Paris 8</small>
+            <h3>Laïa Monceau</h3>
+            <p>Confort, verdeață, atmosferă calmă și o abordare mediteraneană care face locul să pară un refugiu discret.</p>
+          </div>
+        </article>
+        <article class="place" style="background-image:url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1400&q=80')">
+          <div class="place-copy">
+            <small>Restaurant · Paris 11</small>
+            <h3>Laïa Voltaire</h3>
+            <p>O curte ascunsă, lumină naturală și o energie solară care schimbă complet ritmul unei seri obișnuite.</p>
+          </div>
+        </article>
+        <article class="place" style="background-image:url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&w=1400&q=80')">
+          <div class="place-copy">
+            <small>Rooftop · Paris 8</small>
+            <h3>AGUF R.</h3>
+            <p>Rooftop pentru afterwork, muzică live și seri cu panoramă, construit ca o pauză reală deasupra orașului.</p>
+          </div>
+        </article>
+        <article class="place" style="background-image:url('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1400&q=80')">
+          <div class="place-copy">
+            <small>Event & Wine · Paris 8</small>
+            <h3>AGUF W.</h3>
+            <p>Un spațiu rafinat și flexibil pentru proiecte private, activări și experiențe în jurul vinului și al ospitalității.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="experience-grid">
+        <div class="experience-visual"></div>
+        <div class="experience-copy">
+          <span class="eyebrow">Experiențe</span>
+          <h2>Pentru toți cei cărora le este foame de experiențe unice.</h2>
+          <p>AGUF nu este doar o listă de locații. Este o promisiune de atmosferă, estetică și ritm. De aceea, homepage-ul trebuie să curgă ca o invitație continuă: vezi un loc, simți starea lui și vrei să mergi mai departe.</p>
+          <ul>
+            <li>punem accent pe varietatea adreselor fără să pierdem coerența brandului</li>
+            <li>fiecare bloc de conținut trebuie să păstreze senzația de evadare și rafinament</li>
+            <li>vizualul rămâne aerisit, premium și orientat spre dorință, nu spre informație uscată</li>
+            <li>CTA-urile sunt discrete, dar prezente suficient cât să susțină descoperirea brandului</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="agency">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">AGUF Agency</span>
+          <h2>Un layer food & lifestyle construit pentru proiecte care au nevoie de gust, imagine și execuție.</h2>
+        </div>
+        <p>Ca pe site-ul de referință, am păstrat ideea de agency ca extensie naturală a brandului: nu doar operezi locuri, ci construiești experiențe și pentru alte branduri.</p>
+      </div>
+
+      <div class="agency">
+        <div class="agency-panel">
+          <h3 style="font-size:34px; margin-bottom:12px;">Activări și proiecte</h3>
+          <p>AGUF Agency dezvoltă proiecte food și lifestyle pornind de la know-how real din ospitalitate. De la evenimente și pop-up-uri până la colaborări de brand, totul este tratat cu aceeași atenție pentru detaliu și atmosferă.</p>
+        </div>
+        <div class="agency-panel">
+          <h3 style="font-size:34px; margin-bottom:12px;">Ce poate livra</h3>
+          <ul>
+            <li>activări de brand cu univers culinar propriu</li>
+            <li>experiențe private și evenimente corporate</li>
+            <li>colaborări cu chef-i, somelieri și talente din rețea</li>
+            <li>concepte cu imagine coerentă și execuție reală</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="chefs">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Talente</span>
+          <h2>Oameni care dau greutate și personalitate experienței.</h2>
+        </div>
+        <p>Am păstrat logica secțiunii de talente și chefs, pentru că ea dă credibilitate umbrelei AGUF și transformă brandul într-un ecosistem, nu doar într-o colecție de locații.</p>
+      </div>
+
+      <div class="chefs">
+        <article class="chef-card">
+          <h3>Fanny Herpin</h3>
+          <p>Direcție culinară construită pe sezonalitate, precizie și un respect foarte clar pentru gust și echilibru.</p>
+        </article>
+        <article class="chef-card">
+          <h3>Francesco De Stefano</h3>
+          <p>Influențe italiene, sensibilitate vizuală și o bucătărie solară care aduce culoare și energie în fiecare farfurie.</p>
+        </article>
+        <article class="chef-card">
+          <h3>Alizée Durieux</h3>
+          <p>Expertiză în vin și ospitalitate, cu talentul rar de a face lumea pairing-ului accesibilă și memorabilă.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="newsletter">
+      <div class="cta">
+        <div>
+          <span class="eyebrow">Newsletter</span>
+          <h2>Rămâi aproape de noile adrese, seri și proiecte AGUF.</h2>
+          <p>Acest bloc închide homepage-ul cu o invitație clară: brandul nu se termină la locații, ci continuă prin conținut, noutăți și experiențe recurente.</p>
+        </div>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a class="btn btn-primary" href="#">Înscrie-te</a>
+          <a class="btn btn-ghost" href="#places">Vezi locurile</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-box">
+        <strong>AGUF</strong>
+        <p>Locuri și experiențe create pentru oameni care caută evadare urbană, atmosferă și o altă intensitate a orașului.</p>
+      </div>
+      <div class="footer-box">
+        <strong>Explorează</strong>
+        <p><a href="#places">Adrese</a></p>
+        <p><a href="#experience">Experiențe</a></p>
+        <p><a href="#agency">Agency</a></p>
+      </div>
+      <div class="footer-box">
+        <strong>Brand</strong>
+        <p><a href="#chefs">Talente</a></p>
+        <p><a href="#newsletter">Newsletter</a></p>
+        <p><a href="#">Instagram</a></p>
+      </div>
+      <div class="footer-box">
+        <strong>Note</strong>
+        <p>Homepage concept recreat după structura și feeling-ul fugafamily.com, sub identitatea AGUF.</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>AGUF · hospitality, food, lifestyle</span>
+      <span>Homepage concept recreation</span>
+    </div>
+  </footer>
+</body>
+</html>
